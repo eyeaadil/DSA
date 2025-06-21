@@ -7,6 +7,8 @@ public:
         int n = grid[0].size();
         queue<P>que;
 
+
+        //Push all sources (boundary land cells) into the queue.
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
                 if((i==0 || i==m-1 || j==0 || j==n-1) && grid[i][j]==1){
@@ -17,6 +19,8 @@ public:
         }
 
 
+
+        //Use BFS to mark all reachable land from the boundary.
         while(!que.empty()){
             int N = que.size();
 
@@ -39,7 +43,7 @@ public:
 
             }
         }
-
+        // count all unvisited land cells — these are enclaves.
         int count  = 0;
         for(int i=0;i<m;i++){
             for(int j=0;j<n;j++){
